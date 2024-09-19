@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with Seniors</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin: 20px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-bar {
+            width: 90%;
+            max-width: 600px;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: 2px solid #007bff;
+            border-radius: 25px;
+            margin: 20px auto;
+            outline: none;
+            transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .search-bar:focus {
+            border-color: #0056b3;
+            background-color: #fff;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 10px;
+            transition: padding 0.3s ease;
+        }
+
+        .profile {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: #e0f7fa;
+        }
+
+        .profile-img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 5px solid #007bff;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .profile:hover .profile-img {
+            border-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .profile-info {
+            padding: 0 10px;
+        }
+
+        .profile-info h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .profile:hover .profile-info h3 {
+            color: #007bff;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            margin: 0 8px;
+            display: inline-block;
+        }
+
+        .social-links img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.2);
+            filter: brightness(0) invert(0.8);
+        }
+
+        .enhancements {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .enhancements h2 {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .enhancements p {
+            font-size: 1rem;
+            color: #555;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        /* Pagination Styles */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination button.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Seniors Page -->
+    <div class="container">
+        <h1>Connect with Seniors</h1>
+        <input type="text" id="searchBar" class="search-bar" placeholder="Search Seniors...">
+
+        <div id="profileGrid" class="profile-grid">
+            <!-- Profile Cards will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div id="pagination" class="pagination">
+            <!-- Pagination buttons will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Additional Enhancements Section -->
+        <div class="enhancements">
+            <h2>Enhanced Features</h2>
+            <p>Explore the enhanced features of our senior profiles. Each profile card includes clickable social media links and a modern, interactive design. Utilize the search bar to find specific profiles quickly. Enjoy the smooth hover effects and polished layout that adapt beautifully to different screen sizes.</p>
+        </div>
+    </div>
+
+    <script>
+        const profiles = [
+            // Add all 30 profile objects here
+            {
+                name: 'DharaniDhar Panda',
+                img: 'Image/senior1_0.jpg',
+                insta: 'https://www.instagram.com/dharani.panda.96?utm_source=qr&igsh=Y3cxdjJ1aTZlMzI=',
+                linkedin: 'https://www.linkedin.com/in/dharanidhar-panda-92491724b/'
+            },
+            {
+                name: 'Binayak Sethy',
+                img: 'Image/senior2.jpeg',
+                insta: 'https://www.instagram.com/be_u__nick/profilecard/?igsh=bzBqb3p3OGtjMWsx',
+                linkedin: 'https://www.linkedin.com/in/binayak-sethy-647111277?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+            },
+            {
+                name: 'Binayak Dash',
+                img: 'Image/senior3.jpeg',
+                insta: 'https://www.instagram.com/b_u_n_n_y__37?igsh=MWtnZjF6a3ZjZTlmZw==',
+                linkedin: 'https://linkedin.com/in/senior1'  
+            },
+            {
+                name: 'Manas Ranjan Jena',
+                img: 'Image/senior4.jpeg',
+                insta: 'https://www.instagram.com/i_a.m_mjx12?igsh=MXB4MXVwb2x5cmJoMQ==',
+                linkedin: 'https://www.linkedin.com/in/manas-ranjan-jena-219a2a306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'  
+            },
+            {
+                name: 'Rajesh Kumar Polei ',
+                img: 'Image/senior5.jpg',
+                insta: 'https://www.instagram.com/rajesh_rk375?igsh=MXYwMG54aWF1MmNqcw==',
+                linkedin: 'https://www.linkedin.com/in/rajesh-kumar-polei-b0a6ab314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'  
+            },
+            {
+                name: 'UdayaKiran Samal',
+                img: 'Image/senior6.png',
+                insta: 'https://www.instagram.com/udaykiransamal?igsh=MW9hcXo4emJpdnQ1Zw==',
+                linkedin: 'https://www.linkedin.com/in/udayakiran-samal-15534420b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'  
+            },
+            {
+                name: 'Satyanarayan Khatua ',
+                img: 'Image/senior7.jpg',
+                insta: 'https://www.instagram.com/p/C5JVt2pxkky/?utm_source=ig_web_copy_link',
+                linkedin: 'https://www.linkedin.com/in/satyanarayan-khatua-370a5b309?trk=contact-info'  
+            },
+            
+            // Add the rest of the profiles here
+        ];
+
+        const profilesPerPage = 12;
+        let currentPage = 1;
+
+        function renderProfiles() {
+            const start = (currentPage - 1) * profilesPerPage;
+            const end = start + profilesPerPage;
+            const profilesToShow = profiles.slice(start, end);
+
+            const profileGrid = document.getElementById('profileGrid');
+            profileGrid.innerHTML = '';
+            profilesToShow.forEach(profile => {
+                profileGrid.innerHTML += `
+                    <div class="profile">
+                        <img src="${profile.img}" alt="${profile.name}" class="profile-img">
+                        <div class="profile-info">
+                            <h3>${profile.name}</h3>
+                            <div class="social-links">
+                                <a href="${profile.insta}"><img src="Image/instagram1.png" alt="Instagram"></a>
+                                <a href="${profile.linkedin}"><img src="Image/linkedin.png" alt="LinkedIn"></a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(profiles.length / profilesPerPage);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            if (currentPage > 1) {
+                pagination.innerHTML += `<button onclick="changePage(${currentPage - 1})">Previous</button>`;
+            }
+
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.innerHTML += `
+                    <button onclick="changePage(${i})" ${i === currentPage ? 'class="disabled"' : ''}>${i}</button>
+                `;
+            }
+
+            if (currentPage < totalPages) {
+                pagination.innerHTML += `<button onclick="changePage(${currentPage + 1})">Next</button>`;
+            }
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderProfiles();
+        }
+
+        document.getElementById('searchBar').addEventListener('keyup', function () {
+            const query = this.value.toLowerCase();
+            const filteredProfiles = profiles.filter(profile => profile.name.toLowerCase().includes(query));
+            profiles = filteredProfiles;
+            currentPage = 1;
+            renderProfiles();
+        });
+
+        renderProfiles(); // Initial render
+    </script>
+</body>
+</html>
